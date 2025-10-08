@@ -17,7 +17,7 @@ if choice in ("Edit", "Delete"):
                 em.deleteData(nim,saveChange)
                 if (not em.getData("NIM",nim)): st.success("deleted")
             
-
+    
 if (choice in ("Insert","Edit")):
     newNim = st.text_input("Enter New NIM:",key="newNim")
     newName = st.text_input("Enter New Name:",key="newName")
@@ -62,3 +62,11 @@ if (filter != ""):
         st.table(em.getDataFrame()[em.getDataFrame()[targetFilterColumn] > int(filter)]) # cara filter
     # TODO: lanjutkan code di atas
     # note: cara filter ada di modul
+    elif (filterSelectBox == "<"):
+        st.table(em.getDataFrame()[em.getDataFrame()[targetFilterColumn] < int(filter)])
+    elif (filterSelectBox == "="):
+        st.table(em.getDataFrame()[em.getDataFrame()[targetFilterColumn] == int(filter)])
+    elif (filterSelectBox == "<="):
+        st.table(em.getDataFrame()[em.getDataFrame()[targetFilterColumn] <= int(filter)])
+    elif (filterSelectBox == ">="):
+        st.table(em.getDataFrame()[em.getDataFrame()[targetFilterColumn] >= int(filter)])
